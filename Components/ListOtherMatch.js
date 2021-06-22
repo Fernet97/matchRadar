@@ -14,15 +14,15 @@ class ListOtherMatch extends Component {
       return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.itemMatch}>
-              <Text>ciao</Text>
+              <Text style = {{fontSize: 18, fontFamily: "antipasto"}}>Scrivo qualcosa</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.itemMatch}>
-              <Text>ciao</Text>
+              <Text style = {{fontSize: 18, fontFamily: "antipastoBOLD"}}>Scrivo qualcosa chiatto</Text>
             </TouchableOpacity>
 
 
             <TouchableOpacity style={styles.vediTutte}>
-              <Text style = {{fontWeight: "bold", fontSize: 18}}>Vedi tutti</Text>
+              <Text style = {{fontSize: 18, fontFamily: "antipastoBOLD"}}>Vedi tutti</Text>
             </TouchableOpacity>
         </View>
       )
