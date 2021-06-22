@@ -4,6 +4,7 @@ import {Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { Ionicons, FontAwesome, FontAwesome5 , EvilIcons, Entypo, MaterialIcons    } from '@expo/vector-icons';
 import WeekList from './Components/WeekList';
 import MatchViewer from './Components/MatchViewer';
+import ListOtherMatch from './Components/ListOtherMatch';
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
 
 export default class initialScreen extends React.Component {
@@ -48,10 +49,7 @@ export default class initialScreen extends React.Component {
        {/* Altri match */}
        <View  style={{flex: 3, width: '100%', alignItems: 'center'}}>
          <Text style={{fontSize: 23, fontWeight:"bold"}}>Altri Match</Text>
-         {/*<TouchableOpacity style={{marginTop: "20%", backgroundColor: "#1272db", padding: 20, borderRadius: 20}}>
-            <Text>Invio Notifica</Text>
-         </TouchableOpacity>
-        */}
+            <ListOtherMatch/>
        </View>
 
 
