@@ -1,20 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
 import { Ionicons, FontAwesome, FontAwesome5 , EvilIcons, Entypo, MaterialIcons    } from '@expo/vector-icons';
 import WeekList from './Components/WeekList';
 import MatchViewer from './Components/MatchViewer';
 import ListOtherMatch from './Components/ListOtherMatch';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import Logo from './assets/icon.png';
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
 
 export default function App(props) {
 
   let [fontsLoaded] = useFonts({
-    'antipastoBOLD': require('./assets/fonts/evolveBold.otf'),
-    'antipasto': require('./assets/fonts/evolveLight.otf'),
+    'evolveBOLD': require('./assets/fonts/evolveBold.otf'),
+    'evolve': require('./assets/fonts/evolveLight.otf'),
   });
+
+  
 
 
   if (!fontsLoaded) {
@@ -28,9 +31,9 @@ export default function App(props) {
 
           {/*Barra in alto*/}
           <View  style={styles.TopContainer}>
-           <Ionicons style={{flex: 7}} name="ios-search-circle" size={60} color="#1272db" />
+           <Image source={Logo} style={{width: "15%", aspectRatio: 1}} />
             <View style={{ flexDirection: 'row', alignItems: "center",
-            justifyContent: "space-between", flex: 2}}>
+                          justifyContent: "space-between", width: "20%"}}>
               <TouchableOpacity><EvilIcons name="user" size={35} color="black" /></TouchableOpacity>
               <TouchableOpacity><Ionicons name="ios-settings-outline" size={28} color="black" /></TouchableOpacity>
             </View>
@@ -38,7 +41,7 @@ export default function App(props) {
 
           {/* I tuoi Match */}
           <View  style={{flex: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{fontSize: 25,  fontFamily: 'antipastoBOLD'}}>I tuoi Match</Text>
+            <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>I tuoi Match</Text>
             <View style = {{flex: 2,  width: "100%", height: "10%", justifyContent: "center"}}>
               <WeekList/>
             </View>
@@ -52,7 +55,7 @@ export default function App(props) {
 
          {/* Altri match */}
          <View  style={{flex: 3, width: '100%', alignItems: 'center'}}>
-           <Text style={{fontSize: 25,  fontFamily: 'antipastoBOLD'}}>Altri Match</Text>
+           <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>Altri Match</Text>
               <ListOtherMatch/>
          </View>
 
@@ -110,7 +113,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between",
-        // backgroundColor: 'red',
       },
 
 

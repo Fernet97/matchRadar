@@ -19,25 +19,25 @@ renderDays(){
       return (
         <View style={styles.container}>
             <LinearGradient colors={['#29abe2','#1272db']} style={styles.dayItem}>
-              <Text style={{fontFamily: "antipastoBOLD", fontSize: 15, color: "white"}}>L</Text>
+              <Text style={{fontFamily: "evolveBOLD", fontSize: 15, color: "white"}}>L</Text>
            </LinearGradient>
            <TouchableOpacity style={styles.dayItem} >
-             <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>M</Text>
+             <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>M</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.dayItem} >
-            <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>M</Text>
+            <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>M</Text>
          </TouchableOpacity>
          <TouchableOpacity style={styles.dayItem} >
-           <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>G</Text>
+           <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>G</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.dayItem} >
-          <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>V</Text>
+          <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>V</Text>
        </TouchableOpacity>
        <TouchableOpacity style={styles.dayItem} >
-         <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>S</Text>
+         <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>S</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.dayItem} >
-        <Text style={{fontFamily: "antipastoBOLD", fontSize: 15}}>D</Text>
+        <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>D</Text>
      </TouchableOpacity>
 
         </View>

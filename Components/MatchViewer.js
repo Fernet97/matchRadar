@@ -68,10 +68,10 @@ class MatchViewer extends React.Component {
          elevation: 12,
        }}
        colors={['#29abe2','#1272db']}>
-        <Text style= {{fontFamily: "antipasto", fontSize: 14, color: "white", marginBottom: "10%"}}>{this.props.nameSport}</Text>
-        <Text style= {{fontSize: 19, color: "white", fontFamily: "antipastoBOLD"}}>{this.props.field}</Text>
-        <Text style= {{fontSize: 16, color: "white", fontFamily: "antipasto"}}>{this.props.location}</Text>
-        <Text style= {{fontSize: 19, color: "white", fontFamily: "antipastoBOLD"}}>{this.props.hour}</Text>
+        <Text style= {{fontFamily: "evolve", fontSize: 14, color: "white", marginBottom: "10%"}}>{this.props.nameSport}</Text>
+        <Text style= {{fontSize: 19, color: "white", fontFamily: "evolveBOLD"}}>{this.props.field}</Text>
+        <Text style= {{fontSize: 16, color: "white", fontFamily: "evolve"}}>{this.props.location}</Text>
+        <Text style= {{fontSize: 19, color: "white", fontFamily: "evolveBOLD"}}>{this.props.hour}</Text>
       </LinearGradient>
 
           {/*Cerchio Partecipanti*/}
@@ -92,7 +92,7 @@ class MatchViewer extends React.Component {
           }}
           colors={['#29abe2','#1272db']}>
             <FontAwesome5 name="users" size={30} color="white" />
-            <Text style= {{fontSize: 19, fontFamily: "antipastoBOLD", color: "white"}}>{this.props.partecipanti}</Text>
+            <Text style= {{fontSize: 19, fontFamily: "evolveBOLD", color: "white"}}>{this.props.partecipanti}</Text>
           </LinearGradient>
 
 
