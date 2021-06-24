@@ -2,8 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
 import { Ionicons, FontAwesome, FontAwesome5 , EvilIcons, Entypo, MaterialIcons    } from '@expo/vector-icons';
-import WeekList from './Components/WeekList';
-import MatchViewer from './Components/MatchViewer';
+import FilterMyMatch from './Components/FilterMyMatch';
 import ListOtherMatch from './Components/ListOtherMatch';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
@@ -16,8 +15,6 @@ export default function App(props) {
     'evolveBOLD': require('./assets/fonts/evolveBold.otf'),
     'evolve': require('./assets/fonts/evolveLight.otf'),
   });
-
-  
 
 
   if (!fontsLoaded) {
@@ -40,17 +37,7 @@ export default function App(props) {
           </View>
 
           {/* I tuoi Match */}
-          <View  style={{flex: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>I tuoi Match</Text>
-            <View style = {{flex: 2,  width: "100%", height: "10%", justifyContent: "center"}}>
-              <WeekList/>
-            </View>
-            {/* Mappa del match */}
-            <View  style={{flex: 7, width: '100%',  alignItems: "center" }}>
-              <MatchViewer nameSport = "Calcio a 5" field = "Palestra Futura"
-                          location = "Polla"  hour = "19:00 - 20:00"  partecipanti = "7/10" />
-            </View>
-          </View>
+          <FilterMyMatch/>
 
 
          {/* Altri match */}
