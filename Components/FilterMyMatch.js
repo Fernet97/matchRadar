@@ -24,18 +24,11 @@ export default function FilterMyMatch() {
 };
 
 
-//CUSTOM HOOK: condivido tra più componenti lo stato del filtro/giorno selezionato
-function useChangeDay(initialDay){
-  const [daySelected, setAnotherDay] = useState("Sunday");
-  const onChangeDay = (newday) =>  setAnotherDay(newday);
-  return {daySelected, onChangeDay} //Cosa rendo visibile fuori
-}
-
 
 // Giorni settimana
 function WeekList() {
 
-   const {daySelected, onChangeDay} = useChangeDay();
+  const [daySelected, setNewDay] = useState("Monday");
 
    const mapNameDays = {
         "Monday" : "L" ,
@@ -51,13 +44,13 @@ function WeekList() {
      //Se il giorno selezionato combacia con un item da renderizzare
      if(daySelected == props.day)
        return(
-         <LinearGradient onPress= {() => onChangeDay(props.day)} colors={['#29abe2','#1272db']} style={stylesWeekList.dayItem}>
+         <LinearGradient  colors={['#29abe2','#1272db']} style={stylesWeekList.dayItem}>
            <Text style={{fontFamily: "evolveBOLD", fontSize: 15, color: "white"}}>{mapNameDays[props.day]}</Text>
          </LinearGradient>
        );
 
      return(
-       <TouchableOpacity onPress= {() => onChangeDay(props.day)} style={stylesWeekList.dayItem} >
+       <TouchableOpacity onPress={() => setNewDay(props.day)}  style={stylesWeekList.dayItem} >
          <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>{mapNameDays[props.day]}</Text>
       </TouchableOpacity>
      );
