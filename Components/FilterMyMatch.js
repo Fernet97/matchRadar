@@ -8,11 +8,18 @@ TouchableOpacity.defaultProps = { activeOpacity: 0.35}
 
 //Gestisce il fetch e la selezione delle partite da visulizzare
 export default function FilterMyMatch() {
+
+  const [daySelected, setNewDay] = useState("Friday");
+
+  function handleChangeDay(newDay) {
+    setNewDay(newDay);
+  }
+
   return (
     <View  style={{flex: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }}>
       <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>I tuoi Match</Text>
       <View style = {{flex: 2,  width: "100%", height: "10%", justifyContent: "center"}}>
-        <WeekList />
+        <WeekList day = {daySelected}  onChange =  {handleChangeDay} />
       </View>
       {/* Mappa del match */}
       <View  style={{flex: 7, width: '100%',  alignItems: "center" }}>
@@ -26,9 +33,7 @@ export default function FilterMyMatch() {
 
 
 // Giorni settimana
-function WeekList() {
-
-  const [daySelected, setNewDay] = useState("Monday");
+function WeekList(propsParent) {
 
    const mapNameDays = {
         "Monday" : "L" ,
@@ -42,7 +47,7 @@ function WeekList() {
 
    function ItemDay(props) {
      //Se il giorno selezionato combacia con un item da renderizzare
-     if(daySelected == props.day)
+     if(propsParent.day == props.day)
        return(
          <LinearGradient  colors={['#29abe2','#1272db']} style={stylesWeekList.dayItem}>
            <Text style={{fontFamily: "evolveBOLD", fontSize: 15, color: "white"}}>{mapNameDays[props.day]}</Text>
@@ -50,7 +55,7 @@ function WeekList() {
        );
 
      return(
-       <TouchableOpacity onPress={() => setNewDay(props.day)}  style={stylesWeekList.dayItem} >
+       <TouchableOpacity onPress = {() => propsParent.onChange(props.day)} style={stylesWeekList.dayItem} >
          <Text style={{fontFamily: "evolveBOLD", fontSize: 15}}>{mapNameDays[props.day]}</Text>
       </TouchableOpacity>
      );
