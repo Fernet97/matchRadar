@@ -74,11 +74,6 @@ export default function FilterMyMatch() {
   }, [updateMatch]);
 
 
-
-  const ThereIsMatchDaySelected = true; //simulare tutto il cambio render con dati finti presi da api
-
-
-
   function handleChangeDay(newDay) {
     setNewDay(newDay);
   }
