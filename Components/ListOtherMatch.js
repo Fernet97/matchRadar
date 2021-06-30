@@ -6,70 +6,51 @@ TouchableOpacity.defaultProps = { activeOpacity: 0.35}
 
 
 
-export default function ListOtherMatch() {
-  const [match, updateMatch] = useState([]);
+export default function ListOtherMatch({ prop }) {
+  const [match, updateMatch] = useState(null);
+
   // Fetching from my API ..
   useEffect(() => {
-    const fetchData = async () => {
-      // const res = await fetch(
-      //   'https://catfact.ninja/fact',
-      // );
-      // const json = await res.json();
-      //console.log(JSON.stringify(json.fact));
-      //updateMatch(json.fact); //.fact è un campo
-      listMatch =
-        {1: {
-            "nameSport":"Calcio a 7",
-            "nameField": "Palestra Presente",
-            "location": "Sala Consilina",
-            "hour": "18:00 - 19:00",
-            "partecipanti": "9/10",
-          },
-        2: {
-            "nameSport":"Basket",
-            "nameField": "Da peppino",
-            "location": "Atena Lucana",
-            "hour": "20:00 - 21:00",
-            "partecipanti": "1/10",
-          }
-      };
-      console.log("eccoci:"+listMatch[1].nameSport);
-      updateMatch(listMatch);
-
-    };
+  const fetchData = async () => {
+    const result = await fetch('https://catfact.ninja/fact');
+     const json = await result.json();
+     console.log("\n"+json.fact+"\n");
+    updateMatch(json.fact);
+  };
     fetchData();
-  }, [updateMatch]);
+  }, [prop]); //Si aggiorna quando cambia il prop magari...
 
 
       return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.itemMatch}>
+         <TouchableOpacity style={styles.itemMatch}>
               <View style = {{alignItems: "center", justifyContent: "center", flexDirection: "row"}}>
                 <View style = {{alignItems: "center", justifyContent: "center", paddingHorizontal:"1%" }}>
                   <Ionicons name="ios-basketball-outline" size={24} color="#29abe2" />
                 </View>
                 <View>
-                    <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>{listMatch[1].nameField}</Text>
-                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>{listMatch[1].location}</Text>
-                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>{listMatch[1].hour}</Text>
+                    <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>Palazzetto</Text>
+                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>Sala Consilina</Text>
+                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17: 00</Text>
                 </View>
               </View>
-              <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>{listMatch[1].partecipanti}</Text>
+              <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>6/10</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.itemMatch}>
-              <View style = {{alignItems: "center", justifyContent: "center", flexDirection: "row"}}>
-                <View style = {{alignItems: "center", justifyContent: "center", paddingHorizontal:"1%" }}>
-                  <Ionicons name="ios-basketball-outline" size={24} color="#29abe2" />
-                </View>
-                <View>
-                    <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>{listMatch[2].nameField}</Text>
-                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>{listMatch[2].location}</Text>
-                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>{listMatch[2].hour}</Text>
-                </View>
-              </View>
-              <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>{listMatch[2].partecipanti}</Text>
-            </TouchableOpacity>
+                 <View style = {{alignItems: "center", justifyContent: "center", flexDirection: "row"}}>
+                   <View style = {{alignItems: "center", justifyContent: "center", paddingHorizontal:"1%" }}>
+                     <Ionicons name="ios-basketball-outline" size={24} color="#29abe2" />
+                   </View>
+                   <View>
+                       <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>Palazzetto</Text>
+                       <Text style = {{fontSize: 14, fontFamily: "evolve"}}>Sala Consilina</Text>
+                       <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17: 00</Text>
+                   </View>
+                 </View>
+                 <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>6/10</Text>
+               </TouchableOpacity>
+
 
             <TouchableOpacity style={styles.vediTutte}>
               <Text style = {{fontSize: 18, fontFamily: "evolveBOLD"}}>Vedi tutti</Text>
