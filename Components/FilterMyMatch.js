@@ -8,7 +8,7 @@ TouchableOpacity.defaultProps = { activeOpacity: 0.35}
 
 
 //Gestisce il fetch e la selezione delle partite da visulizzare
-export default function FilterMyMatch() {
+export default function FilterMyMatch(props) {
 
   var days = ['Sunday','Monday','Tuesday',
      'Wednesday','Thursday','Friday','Saturday'];
@@ -85,9 +85,9 @@ export default function FilterMyMatch() {
         <WeekList day = {daySelected} startFrom = {days[date.getDay()] ||"Monday"} onChange = {handleChangeDay} />
       </View>
       {/* Mappa del match */}
-      <View  style={{flex: 7, width: '100%',  alignItems: "center" , justifyContent: "center"}}>
+      <View  style={{flex: 7, width: '100%',  alignItems: "center" , justifyContent: "center"}} >
         {match[daySelected] ?(
-        <MatchViewer nameSport = {match[daySelected].nameSport} field = {match[daySelected].nameField}
+        <MatchViewer callbackForOpenMatch={props.callbackForOpenMatch} nameSport = {match[daySelected].nameSport} field = {match[daySelected].nameField}
                     location = {match[daySelected].location}  hour = {match[daySelected].hour}  partecipanti = {match[daySelected].partecipanti} />
         ): (
           <Text style={{fontSize: 25,  fontFamily: 'evolve', paddingHorizontal: "10%", textAlign: 'center'}}>

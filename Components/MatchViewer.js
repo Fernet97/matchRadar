@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+TouchableOpacity.defaultProps = { activeOpacity: 1}
 
 class MatchViewer extends React.Component {
 
@@ -13,7 +14,7 @@ class MatchViewer extends React.Component {
    render() {
 
       return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={this.props.callbackForOpenMatch} >
 
         {/*Rettangolo di congiunzione*/}
         <LinearGradient  style={{ width: '28%', backgroundColor: "#1272db",
@@ -94,7 +95,7 @@ class MatchViewer extends React.Component {
           </LinearGradient>
 
 
-        </View>
+        </TouchableOpacity>
       )
    }
 }

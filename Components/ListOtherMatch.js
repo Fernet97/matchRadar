@@ -23,7 +23,7 @@ export default function ListOtherMatch(props) {
 
       return (
         <View style={styles.container}>
-         <TouchableOpacity style={styles.itemMatch}>
+         <TouchableOpacity style={styles.itemMatch} onPress={props.callbackForOpenMatch}>
               <View style = {{alignItems: "center", justifyContent: "center", flexDirection: "row"}}>
                 <View style = {{alignItems: "center", justifyContent: "center", paddingHorizontal:"1%" }}>
                   <Ionicons name="ios-basketball-outline" size={24} color="#29abe2" />
@@ -37,7 +37,7 @@ export default function ListOtherMatch(props) {
               <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>6/10</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.itemMatch}>
+            <TouchableOpacity style={styles.itemMatch} onPress={props.callbackForOpenMatch}>
                  <View style = {{alignItems: "center", justifyContent: "center", flexDirection: "row"}}>
                    <View style = {{alignItems: "center", justifyContent: "center", paddingHorizontal:"1%" }}>
                      <Ionicons name="ios-basketball-outline" size={24} color="#29abe2" />

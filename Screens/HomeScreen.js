@@ -10,6 +10,9 @@ export default  function HomeScreen(props) {
 	const gotoSearchScreen = () => {
 		props.navigation.navigate('Search');
 	};
+	const gotoOpenMatchScreen = () => {
+		props.navigation.navigate('OpenMatch');
+	};
 
 	return (
     <View style={styles.container}>
@@ -24,15 +27,20 @@ export default  function HomeScreen(props) {
         </View>
       </View>
 
-      {/* I tuoi Match */}
-      <FilterMyMatch/>
-
+    {/* I tuoi Match */}
+     <FilterMyMatch callbackForOpenMatch = {gotoOpenMatchScreen}/>
 
      {/* Altri match */}
      <View  style={{flex: 3, width: '100%', alignItems: 'center'}}>
        <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>Altri Match</Text>
-          <ListOtherMatch callbackForSearch = {gotoSearchScreen} />
+          <ListOtherMatch callbackForSearch = {gotoSearchScreen}  callbackForOpenMatch = {gotoOpenMatchScreen} />
      </View>
+
+
+		 {/* Per fare un po' di margine per la barra di navigazione */}
+		 <View  style={{flex: 1}}>
+
+		 </View>
     </View>
 	);
 }
