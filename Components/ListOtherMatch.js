@@ -6,7 +6,7 @@ TouchableOpacity.defaultProps = { activeOpacity: 0.35}
 
 
 
-export default function ListOtherMatch({ prop }) {
+export default function ListOtherMatch(props) {
   const [match, updateMatch] = useState(null);
 
   // Fetching from my API ..
@@ -18,7 +18,7 @@ export default function ListOtherMatch({ prop }) {
     updateMatch(json.fact);
   };
     fetchData();
-  }, [prop]); //Si aggiorna quando cambia il prop magari...
+  }, [props]); //Si aggiorna quando cambia il prop magari...
 
 
       return (
@@ -52,7 +52,7 @@ export default function ListOtherMatch({ prop }) {
                </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.vediTutte}>
+            <TouchableOpacity style={styles.vediTutte} onPress={props.callbackForSearch}>
               <Text style = {{fontSize: 18, fontFamily: "evolveBOLD"}}>Vedi tutti</Text>
             </TouchableOpacity>
         </View>

@@ -1,13 +1,121 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
-import { Ionicons, FontAwesome, FontAwesome5 , EvilIcons, Entypo, MaterialIcons    } from '@expo/vector-icons';
-import FilterMyMatch from './Components/FilterMyMatch';
-import ListOtherMatch from './Components/ListOtherMatch';
+import { Ionicons, Entypo, MaterialIcons    } from '@expo/vector-icons';
+
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-import Logo from './assets/icon.png';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './Screens/HomeScreen';
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
+
+
+
+
+function NewMatchScreen() {
+	return (
+		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+			<Text>NewMatch!</Text>
+		</View>
+	);
+}
+
+
+// Navigation Bottom Bar
+function CustomBottomBar({ state, descriptors, navigation }) {
+
+  function renderItemIcon(nameIcon, isFocused) {
+    switch (nameIcon) {
+      case "Home":
+        return (
+          <Entypo name="home" size={28}  color = {isFocused ? '#1272db' : 'black'} />
+        );
+      case "NewMatch":
+        return (
+          <Entypo name="plus" size={33} color = {isFocused ? '#1272db' : 'black'} />
+        );
+      case "Search":
+        return (
+          <MaterialIcons name="search" size={30}  color = {isFocused ? '#1272db' : 'black'} />
+        );
+      case "Notifications":
+        return (
+          <Ionicons name="md-notifications-outline" size={27} color = {isFocused ? '#1272db' : 'black'} />
+        );
+    }
+  };
+
+  return (
+    <View  style={{height: "12%", width: "100%", alignItems: "center"}}>
+      <View  style={{ width: "65%", padding: "3%", flexDirection: "row", backgroundColor: "white",
+               height: "65%", borderRadius: 30, alignItems: "center", justifyContent: "space-around",
+               borderWidth: 0.02,
+               shadowColor: "#000",
+               shadowOffset: {
+                 width: 0,
+                 height: 12,
+               },
+               shadowColor: "#000",
+               shadowOffset: {
+                 width: 0,
+                 height: 1,
+               },
+               shadowOpacity: 0.22,
+               shadowRadius: 2.22,
+               elevation: 3,
+             }}>
+
+           {state.routes.map((route, index) => {
+               const { options } = descriptors[route.key];
+               const label =
+                 options.tabBarLabel !== undefined
+                   ? options.tabBarLabel
+                   : options.title !== undefined
+                   ? options.title
+                   : route.name;
+
+               const isFocused = state.index === index;
+
+               const onPress = () => {
+                 const event = navigation.emit({
+                   type: 'tabPress',
+                   target: route.key,
+                 });
+                 if (!isFocused && !event.defaultPrevented) {
+                   navigation.navigate(route.name);
+                 }
+                 console.log("selezionato: "+ route.name );
+               };
+
+               const onLongPress = () => {
+                 navigation.emit({
+                   type: 'tabLongPress',
+                   target: route.key,
+                 });
+               };
+               return (
+                 <TouchableOpacity key = {route.key}
+                    accessibilityRole="button"
+                    accessibilityStates={isFocused ? ['selected'] : []}
+                    accessibilityLabel={options.tabBarAccessibilityLabel}
+                    testID={options.tabBarTestID}
+                    onPress={onPress}
+                    onLongPress={onLongPress}>
+                    {renderItemIcon(route.name, isFocused )}
+                 </TouchableOpacity>
+               );
+             })}
+
+       </View>
+    </View>
+  );
+}
+
+
+
+
+const Tab = createBottomTabNavigator();
 
 export default function App(props) {
 
@@ -16,7 +124,6 @@ export default function App(props) {
     'evolve': require('./assets/fonts/evolveLight.otf'),
   });
 
-
   if (!fontsLoaded) {
     console.log("font non ancora caricato...");
     return <AppLoading />;
@@ -24,57 +131,14 @@ export default function App(props) {
     else {
       console.log("font caricato!");
       return (
-        <View style={styles.container}>
-
-          {/*Barra in alto*/}
-          <View  style={styles.TopContainer}>
-           <Image source={Logo} style={{width: "15%", aspectRatio: 1}} />
-            <View style={{ flexDirection: 'row', alignItems: "center",
-                          justifyContent: "space-between", width: "20%"}}>
-              <TouchableOpacity><EvilIcons name="user" size={35} color="black" /></TouchableOpacity>
-              <TouchableOpacity><Ionicons name="ios-settings-outline" size={28} color="black" /></TouchableOpacity>
-            </View>
-          </View>
-
-          {/* I tuoi Match */}
-          <FilterMyMatch/>
-
-
-         {/* Altri match */}
-         <View  style={{flex: 3, width: '100%', alignItems: 'center'}}>
-           <Text style={{fontSize: 25,  fontFamily: 'evolveBOLD'}}>Altri Match</Text>
-              <ListOtherMatch/>
-         </View>
-
-
-         {/*Barra Menu */}
-         <View  style={{flex: 1, width: "100%", alignItems: "center"}}>
-            <View  style={{ width: "65%", padding: "3%", flexDirection: "row", backgroundColor: "white",
-                    height: "65%", borderRadius: 30, alignItems: "center", justifyContent: "space-around",
-                    borderWidth: 0.02,
-                    shadowColor: "#000",
-                    shadowOffset: {
-                    	width: 0,
-                    	height: 12,
-                    },
-                    shadowColor: "#000",
-                    shadowOffset: {
-                    	width: 0,
-                    	height: 1,
-                    },
-                    shadowOpacity: 0.22,
-                    shadowRadius: 2.22,
-                    elevation: 3,
-                  }}>
-              <TouchableOpacity><Entypo name="home" size={28} color="#1272db" /></TouchableOpacity>
-              <TouchableOpacity><Entypo name="plus" size={33} color="black" /></TouchableOpacity>
-              <TouchableOpacity><MaterialIcons name="search" size={30} color="black" /></TouchableOpacity>
-              <TouchableOpacity><Ionicons name="md-notifications-outline" size={27} color="black" /></TouchableOpacity>
-            </View>
-         </View>
-
-
-        </View>
+        <NavigationContainer >
+          <Tab.Navigator  tabBar={props => <CustomBottomBar {...props} />}>
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="NewMatch" component={NewMatchScreen} />
+            <Tab.Screen name="Search" component={NewMatchScreen} />
+            <Tab.Screen name="Notifications" component={NewMatchScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
 	  );
   }
 
@@ -91,16 +155,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       marginTop: '5%',
       justifyContent: 'space-between',
+      backgroundColor: "white",
     },
-
-    TopContainer: {
-        flex: 1,
-        width: '100%',
-        paddingHorizontal: '3%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: "space-between",
-      },
-
 
 });
