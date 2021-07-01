@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import {Text, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 import team1 from '../assets/squadra1.png';
 import team2 from '../assets/squadra2.png';
+import riassuntoTab from '../MatchReviewTabs/riassuntoTab';
+import commentiTab from '../MatchReviewTabs/commentiTab';
+import noteTab from '../MatchReviewTabs/noteTab';
+import { Ionicons } from '@expo/vector-icons';
 
 // Navigation Bottom Bar
 function CustomMatchBar({ state, descriptors, navigation }) {
@@ -85,106 +89,6 @@ function CustomMatchBar({ state, descriptors, navigation }) {
 
 
 
-function riassuntoTab(props) {
-	return (
-		<View style={{flex: 1, backgroundColor: "white", justifyContent: 'center', alignItems: 'stretch' }}>
-       <View style={styles.Section}>
-          <Text style = {{fontFamily: "evolveBOLD",
-           fontSize: 22, color:"black"}}>
-              Palazzetto
-           </Text>
-          <Text style = {{fontFamily: "evolve",
-           fontSize: 15, color:"black"}}>
-              Sala Consilina
-           </Text>
-          <Text style = {{fontFamily: "evolveBOLD",
-           fontSize: 20, color:"black"}}>
-              19:00 - 20:00
-           </Text>
-       </View>
-
-       <View style= {{
-         flex: 1, flexDirection: "row", justifyContent: "space-around",
-         alignItems: "center",
-       }}>
-        <View>
-          <Text style= {styles.UserItem}>Utente 1 (C)</Text>
-          <Text style= {styles.UserItem}>Utente 2</Text>
-          <Text style= {styles.UserItem}>Utente 3</Text>
-          <Text style= {styles.UserItem}>Utente 4</Text>
-          <Text style= {styles.UserItem}>Utente 5</Text>
-        </View>
-
-        <View>
-          <Text style= {styles.UserItem}>Utente 1 (C)</Text>
-          <Text style= {styles.UserItem}>Utente 2</Text>
-          <Text style= {styles.UserItem}>Utente 3</Text>
-        </View>
-       </View>
-
-
-       <View  style= {{ flex: 1,
-         flexDirection: "column", justifyContent: "space-evenly",
-         alignItems: "center",
-       }}>
-          <TouchableOpacity style = {{
-            backgroundColor: "#1272db",
-            width: "60%",
-            height: "30%",
-            alignItems: "center",
-            borderRadius: 12,
-            paddingVertical: "2%",
-            justifyContent: "center",
-          }}>
-            <LinearGradient
-              colors={['rgba(41, 171, 226, 0.95)', 'transparent']}
-               style = {[styles.gradientContainer, {borderRadius: 12}]}/>
-            <Text style = {{fontFamily: "evolve", color: "white",
-              fontSize: 18 }}>Invita amici</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style = {{
-            backgroundColor: "red",
-            width: "60%",
-            height: "30%",
-            alignItems: "center",
-            borderRadius: 12,
-            paddingVertical: "2%",
-            justifyContent: "center",
-          }}>
-              <LinearGradient
-                colors={['rgba(255, 255, 255, 0.5)', 'transparent']}
-                 style = {[styles.gradientContainer, {borderRadius: 12}]}/>
-              <Text style = {{fontFamily: "evolve", color: "white",
-                fontSize: 18 }}>Abbandona</Text>
-          </TouchableOpacity>
-       </View>
-    </View>
-	);
-}
-
-function noteTab(props) {
-  console.log("ciaociao");
-
-	return (
-		<View style={{flex: 1, backgroundColor: "white", justifyContent: "flex-start", alignItems: 'stretch' }}>
-       <View style = {{marginVertical: "20%", marginHorizontal: "5%", alignItems: "flex-start", }}>
-        <Text style = {{fontSize: 18, color: "black", fontFamily: "evolveBOLD"}}>
-          Raga tutto Peppe, la prima partita è gratis. Raga mi raccomando, maglie gialle e nere.
-          Se facciamo i bravi magari anche la prossima è a costo 0.
-        </Text>
-       </View>
-     </View>
-	);
-}
-
-function commentiTab(props) {
-	return (
-		<View style={{flex: 1, backgroundColor: "white", justifyContent: 'center', alignItems: 'center' }}>
-       <Text>Commenti</Text>
-    </View>
-	);
-}
 
 const Tab = createBottomTabNavigator();
 export default  function  OpenMatchScreen(props) {
@@ -268,5 +172,14 @@ const styles = StyleSheet.create({
     color: "black",
   },
 
+  TextInput: {
+    height: 40,
+    margin: 12,
+    width: "70%",
+    paddingHorizontal: 15,
+    fontFamily: "evolveBOLD",
+    borderRadius: 20,
+    backgroundColor: 'rgba(52, 52, 52, 0.2)'
+  },
 
 });
