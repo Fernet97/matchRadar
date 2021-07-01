@@ -14,7 +14,7 @@ class MatchViewer extends React.Component {
    render() {
 
       return (
-        <TouchableOpacity style={styles.container} onPress={this.props.callbackForOpenMatch} >
+        <TouchableOpacity activeOpacity={1} style={styles.container} onPress={this.props.callbackForOpenMatch} >
 
         {/*Rettangolo di congiunzione*/}
         <LinearGradient  style={{ width: '28%', backgroundColor: "#1272db",

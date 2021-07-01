@@ -8,18 +8,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
+import OpenMatchScreen from './Screens/OpenMatchScreen';
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
 
 
 
 
-function OpenMatchScreen() {
-	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>MATCH APERTO</Text>
-		</View>
-	);
-}
 
 function TopBarForOpenMatch() {
   return (
@@ -197,6 +191,7 @@ export default function App(props) {
               options={{
                 headerTitle: props => <TopBarForOpenMatch {...props} />,
                 headerStyle: {backgroundColor: '#1272db'},
+								headerTintColor: 'white',
               }}
               name="OpenMatch" component={OpenMatchScreen} />
     			</Stack.Navigator>
