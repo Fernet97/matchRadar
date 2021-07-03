@@ -25,7 +25,7 @@ class MatchViewer extends React.Component {
          transform: [{ rotate: '28deg'}],
          left: "13%",
        }}
-         colors={['#1272db','#29abe2']}
+         colors={['#1272db','#29abe2']} //scuro, chiaro
          />
 
 

@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
 import OpenMatchScreen from './Screens/OpenMatchScreen';
+import NewMatchScreen from './Screens/NewMatchScreen';
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
 
 
@@ -26,17 +27,6 @@ function TopBarForOpenMatch() {
 }
 
 
-
-function NewMatchScreen(props) {
-
-	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<TouchableOpacity>
-       <Text>NUOVO MATCH</Text>
-      </TouchableOpacity>
-    </View>
-	);
-}
 
 function NotificationsScreen(props) {
 
