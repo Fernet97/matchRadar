@@ -11,8 +11,8 @@ export default function SelectSportTab(props) {
       colors={['rgba(41, 171, 226, 0.90)', 'transparent']}
        style = {styles.gradientContainer}/>
 
-       <Text style = {{fontFamily: "evolveBOLD", width: "100%", textAlign: "left", paddingHorizontal: "8%",
-       fontSize: 35, color: "white", marginBottom: "12%"}}>Seleziona lo sport</Text>
+       <Text style = {{fontFamily: "evolveBOLD", width: "100%", textAlign: "left",
+       fontSize: 35, color: "white", marginBottom: "12%"}}>  Seleziona lo sport</Text>
 
       <View style= {styles.coverWhite}>
         <TouchableOpacity style = {styles.buttonSport}>

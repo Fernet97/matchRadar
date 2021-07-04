@@ -53,7 +53,7 @@ export default function NewMatchScreen(props) {
       );
       case 'WhoMatch':
       return (
-          <WhenMatchTab/>
+          <WhoMatchTab/>
       );
       default:
     }
