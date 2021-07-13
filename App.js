@@ -10,6 +10,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './Screens/HomeScreen';
 import OpenMatchScreen from './Screens/OpenMatchScreen';
 import NewMatchScreen from './Screens/NewMatchScreen';
+import SearchScreen from './Screens/SearchScreen';
+
 // TouchableOpacity.defaultProps = { activeOpacity: 0.70}
 
 
@@ -34,16 +36,6 @@ function NotificationsScreen(props) {
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 			<TouchableOpacity>
        <Text>NOTIFICATION</Text>
-      </TouchableOpacity>
-    </View>
-	);
-}
-
-function SearchScreen(props) {
-	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<TouchableOpacity>
-       <Text>Schermata di Ricerca</Text>
       </TouchableOpacity>
     </View>
 	);
