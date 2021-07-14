@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput } from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput, FlatList} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import WeekList from '../Components/WeekList';
@@ -10,6 +10,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import PeopleTab from '../SearchMatchTabs/PeopleTab';
 import FieldTab from '../SearchMatchTabs/FieldTab';
+
+import MatchItem from '../Components/MatchItem';
+
 
 
 
@@ -178,13 +181,31 @@ export default  function  SearchScreen(props) {
                <View style = {{ width: "100%", height: "10%", justifyContent: "center", marginVertical: "5%"}}>
                   <WeekList day = {daySelected} startFrom = {days[date.getDay()] ||"Monday"} onChange = {handleChangeDay} />
                </View>
-                <Text>CIao</Text>
-                <Text>CIao</Text>
-                <Text>CIao</Text>
+               <View style={styles.containerList}>
+               <FlatList
+                 data={[
+                   {key: 'Campo rosso'},
+                   {key: 'Zi pepp'},
+                   {key: 'Futura'},
+                   {key: 'MMh Arena'},
+                   {key: 'La papuia è fiuta alleba'},
+                   {key: 'San Paolo'},
+                   {key: 'campo r i sciemi'},
+                   {key: 'campo wow'},
+                   {key: 'Stadio Frenesia'},
+                   {key: 'Campo blu'},
+                   {key: 'Campo grigio'},
+
+                 ]}
+                 renderItem={({item}) => <MatchItem item = {item} />}
+                 contentContainerStyle={{ paddingBottom: "30%"}}
+                 style = {{paddingHorizontal: "3%"}}
+               />
+                </View>
              </View>
            ) :(
              <View style = {styles.coverWhite}>
-                  <View style = {{width: "100%", flex: 1, paddingTop: "25%"}}>
+                  <View style = {{width: "100%", flex: 1, paddingTop: "18%"}}>
                    <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
                      <Tab.Screen name="Persone" component={PeopleTab} />
                      <Tab.Screen name="Campi" component={FieldTab} />
@@ -235,5 +256,9 @@ const styles = StyleSheet.create({
       width: "90%",
       marginHorizontal: 5,
       fontFamily: "evolveBOLD",
+    },
+
+    containerList: {
+     flex: 1,
     },
   })

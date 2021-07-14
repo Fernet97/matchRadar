@@ -31,7 +31,7 @@ export default function ListOtherMatch(props) {
                 <View>
                     <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>Palazzetto</Text>
                     <Text style = {{fontSize: 14, fontFamily: "evolve"}}>Sala Consilina</Text>
-                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17: 00</Text>
+                    <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17:00</Text>
                 </View>
               </View>
               <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>6/10</Text>
@@ -45,7 +45,7 @@ export default function ListOtherMatch(props) {
                    <View>
                        <Text style = {{fontSize: 16, fontFamily: "evolveBOLD"}}>Palazzetto</Text>
                        <Text style = {{fontSize: 14, fontFamily: "evolve"}}>Sala Consilina</Text>
-                       <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17: 00</Text>
+                       <Text style = {{fontSize: 14, fontFamily: "evolve"}}>16:00 - 17:00</Text>
                    </View>
                  </View>
                  <Text style = {{fontSize: 17, fontFamily: "evolveBOLD", paddingHorizontal: "2%"}}>6/10</Text>
