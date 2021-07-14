@@ -4,6 +4,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import WeekList from '../Components/WeekList';
 
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import PeopleTab from '../SearchMatchTabs/PeopleTab';
+import FieldTab from '../SearchMatchTabs/FieldTab';
+
+
 
 function SearchBar(props) {
 
@@ -40,9 +48,91 @@ function SearchBar(props) {
 
 
 
+// Navigation tra persone e campetti
+function CustomTabBar({ state, descriptors, navigation }) {
+
+  return (
+    <View  style={{position: 'absolute', top: 0, height: 60, width: "100%", marginTop: "2%", alignItems: "stretch"}}>
+      <View  style={{flexDirection: "row", height: "65%", borderBottomWidth: 1,
+                  alignItems: "center", justifyContent: "space-evenly"}}>
+
+           {state.routes.map((route, index) => {
+               const { options } = descriptors[route.key];
+               const label =
+                 options.tabBarLabel !== undefined
+                   ? options.tabBarLabel
+                   : options.title !== undefined
+                   ? options.title
+                   : route.name;
+
+               const isFocused = state.index === index;
+
+               const onPress = () => {
+                 const event = navigation.emit({
+                   type: 'tabPress',
+                   target: route.key,
+                 });
+                 if (!isFocused && !event.defaultPrevented) {
+                   navigation.navigate(route.name);
+                 }
+                 console.log("selezionato: "+ route.name );
+               };
+
+               const onLongPress = () => {
+                 navigation.emit({
+                   type: 'tabLongPress',
+                   target: route.key,
+                 });
+               };
+
+               if(isFocused)
+               return (
+                 <TouchableOpacity
+                    style = {{height: "100%",justifyContent: "center", borderBottomWidth: 3}}
+                    key = {route.key}
+                    accessibilityRole="button"
+                    accessibilityStates={isFocused ? ['selected'] : []}
+                    accessibilityLabel={options.tabBarAccessibilityLabel}
+                    testID={options.tabBarTestID}
+                    onPress={onPress}
+                    onLongPress={onLongPress}>
+
+
+                    <Text style = {{
+                      fontFamily: "evolveBOLD",
+                      fontSize: 20,
+                      color:"black",
+                    }}>
+                      {route.name}
+                   </Text>
+                  </TouchableOpacity>
+               );
+               else return (
+                 <Text onPress={onPress} key = {route.key}
+                 style = {{
+                   fontFamily: "evolve",
+                   fontSize: 20,
+                   color:"black",
+                 }}>
+                   {route.name}
+                </Text>
+               );
+
+             })}
+
+       </View>
+    </View>
+  );
+}
+
+
+
+
+
+
+const Tab = createBottomTabNavigator();
 
 export default  function  SearchScreen(props) {
-
 
   var days = ['Sunday','Monday','Tuesday',
      'Wednesday','Thursday','Friday','Saturday'];
@@ -94,7 +184,12 @@ export default  function  SearchScreen(props) {
              </View>
            ) :(
              <View style = {styles.coverWhite}>
-                <Text>Per la navigazione tra tab persone e campi usare stressa logica in OpenMatch con Riassunto/note/Commenti</Text>
+                  <View style = {{width: "100%", flex: 1, paddingTop: "25%"}}>
+                   <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
+                     <Tab.Screen name="Persone" component={PeopleTab} />
+                     <Tab.Screen name="Campi" component={FieldTab} />
+                   </Tab.Navigator>
+                  </View>
              </View>
 
            )

@@ -101,7 +101,7 @@ export default  function  OpenMatchScreen(props) {
         <Image source={team2} style={{width: 100, height: 100}} />
       </View>
 
-      <View  style={{flex: 5, backgroundColor: "pink" }}>
+      <View  style={{flex: 5 }}>
           <Tab.Navigator tabBar={props => <CustomMatchBar {...props} />}>
             <Tab.Screen name="Riassunto" component={riassuntoTab} />
             <Tab.Screen name="Note" component={noteTab} />
