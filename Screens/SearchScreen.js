@@ -184,17 +184,17 @@ export default  function  SearchScreen(props) {
                <View style={styles.containerList}>
                <FlatList
                  data={[
-                   {key: 'Campo rosso'},
-                   {key: 'Zi pepp'},
-                   {key: 'Futura'},
-                   {key: 'MMh Arena'},
-                   {key: 'La papuia è fiuta alleba'},
-                   {key: 'San Paolo'},
-                   {key: 'campo r i sciemi'},
-                   {key: 'campo wow'},
-                   {key: 'Stadio Frenesia'},
-                   {key: 'Campo blu'},
-                   {key: 'Campo grigio'},
+                   {key: 'match1'},
+                   {key: 'match2'},
+                   {key: 'match3'},
+                   {key: 'match4'},
+                   {key: 'match5'},
+                   {key: 'match6'},
+                   {key: 'match7'},
+                   {key: 'match8'},
+                   {key: 'match9'},
+                   {key: 'match10'},
+                   {key: 'match11'},
 
                  ]}
                  renderItem={({item}) => <MatchItem item = {item} />}

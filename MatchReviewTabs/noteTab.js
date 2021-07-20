@@ -1,6 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput } from 'react-native';
+import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput, FlatList } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+
+
+
+
+function CommentoItem(props){
+  return (
+    <View style = {{  marginVertical: "2%", borderRadius: 12, padding: 10, paddingBottom: 2, paddingHorizontal: 20}}>
+        <Text style = {{color: "black", fontFamily: "evolve", fontSize: 18, }}>
+          {props.msg}
+        </Text>
+        <View style = {{alignItems: "flex-end", }}>
+          <Text style = {{fontFamily: "evolve", fontSize: 14}}>{props.hour}</Text>
+        </View>
+    </View>
+
+  );
+}
+
+
+
 
 
 export default function noteTab(props) {
@@ -8,11 +29,19 @@ export default function noteTab(props) {
 
 	return (
 		<View style={{flex: 1, backgroundColor: "white", justifyContent: "flex-start", alignItems: 'stretch' }}>
-       <View style = {{flex: 7, marginVertical: "20%", marginHorizontal: "5%", alignItems: "flex-start", }}>
-        <Text style = {{fontSize: 18, color: "black", fontFamily: "evolveBOLD"}}>
-          Raga paga tutto Peppe, la prima partita è gratis. Raga mi raccomando, maglie gialle e nere.
-          Se facciamo i bravi magari anche la prossima è a costo 0.
-        </Text>
+       <View style = {{flex: 8, marginTop: "20%", alignItems: "flex-start", }}>
+
+       <FlatList
+         data={[
+           {key: "1", msg: 'Raga paga tutto Peppe, la prima partita è gratis. Raga mi raccomando, maglie gialle e nere. Se facciamo i bravi magari anche la prossima è a costo 0.', hour: "12:11"},
+           {key: "2", msg: 'Ah vabbe ja le porta Maurizio le magliette', hour: "12:40"},
+           {key: "3", msg: 'Maaaa io sono al campetto, voi dove minch*a siete????? Dai vi sto aspettando', hour: "13:01"},
+           {key: "4", msg: 'oooooo siete di un ritardo imbarazzante.', hour: "13:51"},
+         ]}
+         renderItem={({item}) => <CommentoItem msg = {item.msg} hour = {item.hour} />}
+       />
+
+
        </View>
        <View style = {{ flex: 3, flexDirection: "row",
         justifyContent: "center", alignItems: "center"}}>
