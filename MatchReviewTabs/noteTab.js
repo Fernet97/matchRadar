@@ -25,7 +25,6 @@ function CommentoItem(props){
 
 
 export default function noteTab(props) {
-  console.log("ciaociao");
 
 	return (
 		<View style={{flex: 1, backgroundColor: "white", justifyContent: "flex-start", alignItems: 'stretch' }}>
