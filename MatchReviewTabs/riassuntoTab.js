@@ -56,6 +56,7 @@ export default function riassuntoTab(props) {
             <LinearGradient
               colors={['rgba(41, 171, 226, 0.95)', 'transparent']}
                style = {[styles.gradientContainer, {borderRadius: 12}]}/>
+
             <Text style = {{fontFamily: "evolve", color: "white",
               fontSize: 18 }}>Invita amici</Text>
           </TouchableOpacity>
@@ -103,7 +104,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "10%",
   },
 
   UserItem: {

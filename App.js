@@ -4,6 +4,8 @@ import {Text, TouchableOpacity, View, StyleSheet, Image } from 'react-native';
 import { Ionicons, Entypo, MaterialIcons    } from '@expo/vector-icons';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { Inter_900Black } from '@expo-google-fonts/inter';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -154,9 +156,11 @@ function TabForBottomBar() {
 
 export default function App(props) {
 
+
   let [fontsLoaded] = useFonts({
     'evolveBOLD': require('./assets/fonts/evolveBold.otf'),
     'evolve': require('./assets/fonts/evolveLight.otf'),
+    Inter_900Black,
   });
 
   if (!fontsLoaded) {

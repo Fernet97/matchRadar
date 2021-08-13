@@ -29,7 +29,7 @@ export default function noteTab(props) {
 
 	return (
 		<View style={{flex: 1, backgroundColor: "white", justifyContent: "flex-start", alignItems: 'stretch' }}>
-       <View style = {{flex: 8, marginTop: "20%", alignItems: "flex-start", }}>
+       <View style = {{flex: 8, alignItems: "flex-start", }}>
 
        <FlatList
          data={[
@@ -37,13 +37,14 @@ export default function noteTab(props) {
            {key: "2", msg: 'Ah vabbe ja le porta Maurizio le magliette', hour: "12:40"},
            {key: "3", msg: 'Maaaa io sono al campetto, voi dove minch*a siete????? Dai vi sto aspettando', hour: "13:01"},
            {key: "4", msg: 'oooooo siete di un ritardo imbarazzante.', hour: "13:51"},
+           {key: "5", msg: 'Mai più con voi, onest', hour: "14:45"},
          ]}
          renderItem={({item}) => <CommentoItem msg = {item.msg} hour = {item.hour} />}
        />
 
 
        </View>
-       <View style = {{ flex: 3, flexDirection: "row",
+       <View style = {{ flex: 2, flexDirection: "row",
         justifyContent: "center", alignItems: "center"}}>
          <TextInput
            style={styles.TextInput}

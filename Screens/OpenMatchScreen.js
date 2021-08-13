@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {Text, TouchableOpacity, View, StyleSheet, Image, TextInput } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { LinearGradient } from 'expo-linear-gradient';
 import team1 from '../assets/squadra1.png';
 import team2 from '../assets/squadra2.png';
@@ -15,9 +14,8 @@ import { Ionicons } from '@expo/vector-icons';
 function CustomMatchBar({ state, descriptors, navigation }) {
 
   return (
-    <View  style={{position: 'absolute', top: 0, height: 80, width: "100%", alignItems: "stretch"}}>
-      <View  style={{flexDirection: "row", height: "65%",
-                  alignItems: "center", justifyContent: "space-evenly"}}>
+    <View  style={{width: "100%", alignItems: "stretch"}}>
+      <View  style={{flexDirection: "row", alignItems: "center", justifyContent: "space-evenly"}}>
 
            {state.routes.map((route, index) => {
                const { options } = descriptors[route.key];
@@ -90,8 +88,12 @@ function CustomMatchBar({ state, descriptors, navigation }) {
 
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 export default  function  OpenMatchScreen(props) {
+
+
+
+
 	return (
     <View style = {styles.container}>
       <View style = {{flex: 2, justifyContent: "center", flexDirection: "row",
@@ -149,15 +151,14 @@ const styles = StyleSheet.create({
           textAlign: "center",
         },
 
-  gradientContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-    height: '100%',
-    borderRadius: 20,
-    paddingVertical: "2%",
-  },
+        // gradientContainer: {
+        //   position: 'absolute',
+        //   left: 0,
+        //   right: 0,
+        //   top: 0,
+        //   height: '100%',
+        //   borderRadius: 20,
+        // },
 
   Section :{
     flex: 1,

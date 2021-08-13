@@ -6,7 +6,6 @@ import WeekList from '../Components/WeekList';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import PeopleTab from '../SearchMatchTabs/PeopleTab';
 import FieldTab from '../SearchMatchTabs/FieldTab';
@@ -55,8 +54,8 @@ function SearchBar(props) {
 function CustomTabBar({ state, descriptors, navigation }) {
 
   return (
-    <View  style={{position: 'absolute', top: 0, height: 60, width: "100%", marginTop: "2%", alignItems: "stretch"}}>
-      <View  style={{flexDirection: "row", height: "65%", borderBottomWidth: 1,
+    <View  style={{ alignItems: "stretch",  height: "10%"}}>
+      <View  style={{flexDirection: "row",  borderBottomWidth: 1,
                   alignItems: "center", justifyContent: "space-evenly"}}>
 
            {state.routes.map((route, index) => {
@@ -133,7 +132,8 @@ function CustomTabBar({ state, descriptors, navigation }) {
 
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
+
 
 export default  function  SearchScreen(props) {
 
@@ -205,7 +205,7 @@ export default  function  SearchScreen(props) {
              </View>
            ) :(
              <View style = {styles.coverWhite}>
-                  <View style = {{width: "100%", flex: 1, paddingTop: "18%"}}>
+                  <View style = {{width: "100%", flex: 1}}>
                    <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
                      <Tab.Screen name="Persone" component={PeopleTab} />
                      <Tab.Screen name="Campi" component={FieldTab} />
